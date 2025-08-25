@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthContext';
 import AppButton from '../shared/AppButton/AppButton';
 import { useForm } from 'react-hook-form';
-import UpdatePost from './updatePost';
+import UpdatePost from './UpdatePost';
 
 export default function CommentPostHeader({
     user: {name, photo, createdAt, body, _id, image},
