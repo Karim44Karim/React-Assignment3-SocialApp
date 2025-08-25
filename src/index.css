@@ -1,0 +1,58 @@
+@font-face{
+  font-family: 'PlaywritePL';
+  src: url('./assets/fonts/PlaywritePL-Regular.ttf');
+}
+@font-face{
+  font-family: 'Rubik';
+  src: url('assets/fonts/Rubik-Regular.ttf');
+}
+
+
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+
+@theme{
+  --font-logo: 'PlaywritePL', sans-serif;
+  --font-primary: 'Rubik', sans-serif;
+}
+
+@layer base{
+  body{
+    @apply font-primary;
+  }
+  h1, h2, h3, h4, h5, h6{
+    @apply font-bold;
+  }
+  h1{
+    @apply text-3xl;
+  }
+  h2{
+    @apply text-2xl;
+  }
+  h3{
+    @apply text-xl;
+  }
+  h4{
+    @apply text-lg;
+  }
+  h5{
+    @apply text-base;
+  }
+  h6{
+    @apply text-sm;
+  }
+}
+
+@layer utilities{
+  .logo{
+    @apply font-logo;
+  }
+  .container{
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+.avatar *{
+  @apply size-full object-cover
+}
