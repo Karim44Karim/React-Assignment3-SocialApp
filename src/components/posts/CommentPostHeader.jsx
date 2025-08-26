@@ -144,7 +144,7 @@ export default function CommentPostHeader({
         </form>
       ) : (
         <h3
-          className={`text-lg font-bold tracking-tight text-gray-900 dark:text-white${
+          className={`text-lg font-bold tracking-tight text-gray-300 dark:text-white${
             isComment ? "ps-16" : ""
           }`}
         >
