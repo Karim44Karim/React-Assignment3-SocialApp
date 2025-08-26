@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { Button, Checkbox, Label, TextInput, Radio, Alert, Datepicker } from "flowbite-react";
+import { Button, Checkbox, Label, TextInput, Radio, Alert, Datepicker, theme } from "flowbite-react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as z from "zod";
@@ -9,6 +9,7 @@ import AppButton from "../../../components/shared/AppButton/AppButton";
 import { HiInformationCircle } from "react-icons/hi";
 import { useState } from "react";
 import {Helmet} from "react-helmet";
+import { toast } from "react-toastify";
 
 
   const URL = `${import.meta.env.VITE_BASE_URL}/users/signup`
@@ -70,15 +71,18 @@ export default function Register() {
 
       if (response.message === 'success') {
         // go to login
-        setApiError(null)
+        console.log("Register Success");
         navigate('/login');
-        localStorage.setItem("token", response.token);
+        console.log("navigation Success");
+        // localStorage.setItem("token", response.token);
+        setApiError(null);
       } else{
         throw new Error(response.error);
       }
     } catch (error) {
       console.log(error)
-      setApiError(error.response.error)
+      toast.error(`${error.response.data.error}`, { theme: "dark" });
+      setApiError(error.response.data.error)
     }
   }
   return (

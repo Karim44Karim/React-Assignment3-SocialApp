@@ -104,7 +104,7 @@ export default function UpdatePost({isEditingPost, setIsEditingPost, image, body
                     alt="Post preview"
                     className="w-80 h-80 object-cover rounded-lg"
                   />
-                )}{" "}
+                )}
                 <input
                   {...register("image")}
                   className="hidden"
@@ -113,7 +113,7 @@ export default function UpdatePost({isEditingPost, setIsEditingPost, image, body
                   onChange={(e) => {
                     const file = e.target.files[0];
                     if (file) {
-                      setPreview(URL.createObjectURL(file)); // ✅ update preview
+                      setPreview(URL.createObjectURL(file));
                     }
                   }}
                 />

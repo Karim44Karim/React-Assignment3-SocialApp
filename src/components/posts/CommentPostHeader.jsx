@@ -85,7 +85,7 @@ export default function CommentPostHeader({
             <Avatar
               alt={name}
               img={
-                !photo.includes("undefined")
+                photo && !photo.includes("undefined")
                   ? photo
                   : `${
                       import.meta.env.VITE_BASE_URL
@@ -108,7 +108,7 @@ export default function CommentPostHeader({
             <Dropdown inline label="">
               <DropdownItem
                 onClick={() => {
-                  isComment? setIsEditing(true): setIsEditingPost(true);
+                  isComment ? setIsEditing(true) : setIsEditingPost(true);
                   console.log(body);
                 }}
               >

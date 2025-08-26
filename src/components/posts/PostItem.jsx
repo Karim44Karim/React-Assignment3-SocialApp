@@ -17,6 +17,8 @@ export default function PostItem({post, showAllComments = false}) {
       comments,
       _id,
     } = post;
+
+    console.log(comments[0])
   return (
     <Card>
       {/* header */}
@@ -66,6 +68,7 @@ export default function PostItem({post, showAllComments = false}) {
                 ...comment.commentCreator,
                 createdAt: comment.createdAt,
                 body: comment.content,
+                photo: comment.commentCreator.photo,
               }}
               mediaId={comment._id}
               isComment={true}
@@ -77,6 +80,7 @@ export default function PostItem({post, showAllComments = false}) {
               ...comments[comments.length - 1].commentCreator,
               createdAt: comments[comments.length - 1].createdAt,
               body: comments[comments.length - 1].content,
+              photo: comments[comments.length-1].commentCreator.photo,
             }}
             mediaId={comments[comments.length-1]._id}
             isComment={true}

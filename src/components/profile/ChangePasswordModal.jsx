@@ -30,7 +30,7 @@ export default function ChangePasswordModal({showChangePassModal, setShowChangeP
             }
           ),
     })
-      .refine((data) => data.password != data.newPassword, {
+      .refine((data) => data.password && data.newPassword && data.password != data.newPassword, {
         message: "New password shall be different form the current password",
         path: ["newPassword"],
       });
@@ -44,7 +44,7 @@ export default function ChangePasswordModal({showChangePassModal, setShowChangeP
         register,
         handleSubmit,
         formState: { errors, isSubmitting, isValid },
-      } = useForm({ defaultValues, resolver: zodResolver(schema) });
+      } = useForm({ defaultValues, resolver: zodResolver(schema), mode: "onChange", });
  
 
   async function onSubmit(data) {
@@ -71,7 +71,7 @@ export default function ChangePasswordModal({showChangePassModal, setShowChangeP
      }
 
     } catch (error) {
-          toast.error("Password Change Failed!", {
+          toast.error(error.response.data.error, {
        theme: "dark",
      })
       console.log(error);
@@ -103,8 +103,8 @@ export default function ChangePasswordModal({showChangePassModal, setShowChangeP
                   id="password"
                   placeholder="Current Password"
                   type="password"
-                  {...register("password")}
                   required
+                  {...register("password")}
                 />
               </div>
                 <p className="text-red-500">{errors.password?.message}</p>
@@ -116,8 +116,8 @@ export default function ChangePasswordModal({showChangePassModal, setShowChangeP
                   id="newPassword"
                   placeholder="New Password"
                   type="password"
-                  {...register("newPassword")}
                   required
+                  {...register("newPassword")}
                 />
               </div>
                 <p className="text-red-500">{errors.newPassword?.message}</p>
